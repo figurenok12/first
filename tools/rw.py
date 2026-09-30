@@ -328,6 +328,83 @@ class Ed:
                 r.deleted = True; n += 1
         self.say('plants cleared', n)
 
+    # ------------------------------------------------------------ bills / stock
+    @staticmethod
+    def _spans(raw):
+        """(start,end,recipe) of every Bill_* <li> inside the bill stack"""
+        out = []; i = 0
+        while True:
+            s = raw.find('<li Class="Bill_', i)
+            if s < 0: break
+            depth = 0; j = s
+            for m in re.finditer(r'<li\b[^>]*?(/?)>|</li>', raw[s:]):
+                t = m.group(0)
+                if t == '</li>': depth -= 1
+                elif not t.endswith('/>'): depth += 1
+                if depth == 0:
+                    j = s + m.end(); break
+            rec = re.search(r'<recipe>(\w+)</recipe>', raw[s:j]).group(1)
+            out.append((s, j, rec)); i = j
+        return out
+
+    def _bill_tmpl(self, plain):
+        for r in self.M.recs:
+            if r.deleted or '<billStack>' not in r.raw: continue
+            for s, e, rc in self._spans(r.raw):
+                head = r.raw[s:s + 40]
+                if plain != ('Bill_ProductionWithUft' in head):
+                    return r.raw[s:e]
+        raise KeyError('no bill template')
+
+    def bill(self, bench, recipe, count, ings=None, mode='TargetCount'):
+        """bill BENCH RECIPE COUNT [ING1,ING2] [TargetCount|RepeatCount|Forever]"""
+        name, _, idx = bench.partition('@')
+        rec = [r for r in self.M.recs if not r.deleted and r.d == name][int(idx or 0)]
+        plain = recipe.startswith('Cook') or recipe in ('Make_Kibble',)
+        if plain:
+            t = self._bill_tmpl(True)
+            keep_filter = True
+        else:
+            t = self._bill_tmpl(False); keep_filter = False
+        bid = int(re.search(r'<nextBillID>(\d+)</nextBillID>', self.M.head).group(1))
+        self.M.head = re.sub(r'<nextBillID>\d+</nextBillID>', '<nextBillID>%d</nextBillID>' % (bid + 1), self.M.head, count=1)
+        t = re.sub(r'<loadID>\d+</loadID>', '<loadID>%d</loadID>' % bid, t, count=1)
+        t = re.sub(r'<recipe>\w+</recipe>', '<recipe>%s</recipe>' % recipe, t, count=1)
+        if ings:
+            t = re.sub(r'<ingredientFilter>.*?</ingredientFilter>', lambda m: AB.filter_xml(ings.split(',')), t, count=1, flags=re.S)
+        t = re.sub(r'<repeatMode>\w+</repeatMode>', '<repeatMode>%s</repeatMode>' % mode, t, count=1)
+        t = re.sub(r'<targetCount>\d+</targetCount>', '<targetCount>%d</targetCount>' % count, t, count=1)
+        t = re.sub(r'<repeatCount>\d+</repeatCount>', '<repeatCount>%d</repeatCount>' % count, t, count=1)
+        if '<bills />' in rec.raw:
+            rec.raw = rec.raw.replace('<bills />', '<bills>' + t + '</bills>', 1)
+        else:
+            i = rec.raw.rfind('</bills>')
+            rec.raw = rec.raw[:i] + t + rec.raw[i:]
+        self.say('bill', bench, recipe, count)
+
+    def unbill(self, bench, recipe):
+        n = 0
+        for rec in self.M.recs:
+            if rec.deleted or rec.d != bench or '<billStack>' not in rec.raw: continue
+            for s, e, rc in reversed(self._spans(rec.raw)):
+                if rc == recipe:
+                    rec.raw = rec.raw[:s] + rec.raw[e:]; n += 1
+            if '<bills>' in rec.raw and not self._spans(rec.raw):
+                rec.raw = re.sub(r'<bills>\s*</bills>', '<bills />', rec.raw)
+        self.say('unbill', bench, recipe, n)
+
+    def stock(self, d, x0, z0, x1, z1, limit=999):
+        """put existing item stacks of DEF one per cell into the rectangle (e.g. onto shelf cells)"""
+        cells = [(x, z) for z in range(min(z0, z1), max(z0, z1) + 1) for x in range(min(x0, x1), max(x0, x1) + 1)]
+        taken = {r.pos for r in self.M.recs if not r.deleted and r.pos and not is_bld(r) and r.cls not in ('Pawn', 'Plant', 'DeadPlant', 'Filth')}
+        free = [c for c in cells if c not in taken]
+        n = 0
+        for r in self.M.recs:
+            if r.deleted or r.d != d or not r.pos or is_bld(r) or r.cls == 'Pawn' or not free or n >= limit: continue
+            if r.id in self.__dict__.setdefault('_stocked', set()): continue
+            self._stocked.add(r.id); r.set_pos(*free.pop(0)); n += 1
+        self.say('stocked', d, n)
+
     def hp(self):
         n = 0
         for r in self.M.recs:
@@ -363,7 +440,7 @@ class Ed:
                     self.show(*args[:4], wires=len(args) > 4)
                 elif cmd == 'roof':
                     self.roof_(*args)
-                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save', 'hide', 'clear'):
+                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save', 'hide', 'clear', 'bill', 'unbill', 'stock'):
                     getattr(self, cmd)(*args)
                 else:
                     self.say('unknown command', cmd)

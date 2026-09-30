@@ -51284,7 +51284,7 @@ NF11LNqZxctbni/cyVw5aRVV1KZz07dlluaTx6bf+dEb
 		</dateNotifier>
 		<uniqueIDsManager>
 			<nextThingID>504210</nextThingID>
-			<nextBillID>48</nextBillID>
+			<nextBillID>53</nextBillID>
 			<nextFactionID>11</nextFactionID>
 			<nextLordID>170</nextLordID>
 			<nextTaleID>1974</nextTaleID>
@@ -166681,7 +166681,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>Beer</def>
 						<id>Beer353846</id>
 						<map>0</map>
-						<pos>(121, 0, 151)</pos>
+						<pos>(133, 0, 110)</pos>
 						<health>50</health>
 						<stackCount>25</stackCount>
 						<questTags IsNull="True" />
@@ -166695,7 +166695,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>Beer</def>
 						<id>Beer353853</id>
 						<map>0</map>
-						<pos>(121, 0, 152)</pos>
+						<pos>(133, 0, 111)</pos>
 						<health>50</health>
 						<stackCount>25</stackCount>
 						<questTags IsNull="True" />
@@ -167256,7 +167256,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>Beer</def>
 						<id>Beer357041</id>
 						<map>0</map>
-						<pos>(121, 0, 153)</pos>
+						<pos>(133, 0, 114)</pos>
 						<health>50</health>
 						<stackCount>23</stackCount>
 						<questTags IsNull="True" />
@@ -168258,7 +168258,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>Beer</def>
 						<id>Beer362600</id>
 						<map>0</map>
-						<pos>(122, 0, 149)</pos>
+						<pos>(133, 0, 115)</pos>
 						<health>50</health>
 						<stackCount>24</stackCount>
 						<questTags IsNull="True" />
@@ -318037,7 +318037,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>MealSimple</def>
 						<id>MealSimple456289</id>
 						<map>0</map>
-						<pos>(145, 0, 132)</pos>
+						<pos>(133, 0, 112)</pos>
 						<health>50</health>
 						<stackCount>10</stackCount>
 						<questTags IsNull="True" />
@@ -356063,7 +356063,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>MealSimple</def>
 						<id>MealSimple489834</id>
 						<map>0</map>
-						<pos>(149, 0, 133)</pos>
+						<pos>(133, 0, 113)</pos>
 						<health>50</health>
 						<stackCount>10</stackCount>
 						<questTags IsNull="True" />
@@ -362448,7 +362448,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>MealSimple</def>
 						<id>MealSimple489437</id>
 						<map>0</map>
-						<pos>(151, 0, 133)</pos>
+						<pos>(133, 0, 116)</pos>
 						<health>50</health>
 						<stackCount>10</stackCount>
 						<questTags IsNull="True" />
@@ -424457,7 +424457,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<def>MealSimple</def>
 						<id>MealSimple498344</id>
 						<map>0</map>
-						<pos>(155, 0, 134)</pos>
+						<pos>(133, 0, 117)</pos>
 						<health>50</health>
 						<stackCount>10</stackCount>
 						<questTags IsNull="True" />
@@ -449740,98 +449740,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<allowAutoRefuel>True</allowAutoRefuel>
 						<billStack>
 							<bills>
-								<li Class="Bill_Production">
-									<loadID>36</loadID>
-									<recipe>CookMealSurvivalBulk</recipe>
-									<allowedSkillRange>0~20</allowedSkillRange>
-									<pawnRestriction>null</pawnRestriction>
-									<precept>null</precept>
-									<xenogerm>null</xenogerm>
-									<ingredientFilter>
-										<disallowedSpecialFilters>
-											<li>AllowCorpsesColonist</li>
-											<li>AllowCorpsesStranger</li>
-										</disallowedSpecialFilters>
-										<allowedDefs>
-											<li>Meat_Bear_Grizzly</li>
-											<li>Meat_Cassowary</li>
-											<li>Meat_Cougar</li>
-											<li>Meat_Panther</li>
-											<li>Meat_Lynx</li>
-											<li>Meat_Cat</li>
-											<li>Meat_YorkshireTerrier</li>
-											<li>Meat_GuineaPig</li>
-											<li>Meat_LabradorRetriever</li>
-											<li>Meat_Husky</li>
-											<li>Meat_Monkey</li>
-											<li>Meat_Chicken</li>
-											<li>Meat_Duck</li>
-											<li>Meat_Turkey</li>
-											<li>Meat_Cow</li>
-											<li>Meat_Boomalope</li>
-											<li>Meat_Muffalo</li>
-											<li>Meat_Bison</li>
-											<li>Meat_Dromedary</li>
-											<li>Meat_Goat</li>
-											<li>Meat_Elk</li>
-											<li>Meat_Yak</li>
-											<li>Meat_Caribou</li>
-											<li>Meat_Horse</li>
-											<li>Meat_Donkey</li>
-											<li>Meat_Elephant</li>
-											<li>Meat_Rhinoceros</li>
-											<li>Meat_Hare</li>
-											<li>Meat_Thrumbo</li>
-											<li>Meat_Cobra</li>
-											<li>Meat_Tortoise</li>
-											<li>Meat_Alphabeaver</li>
-											<li>Meat_Pig</li>
-											<li>Meat_Ibex</li>
-											<li>Meat_Deer</li>
-											<li>Meat_Gazelle</li>
-											<li>Meat_Chinchilla</li>
-											<li>Meat_Sheep</li>
-											<li>Meat_Alpaca</li>
-											<li>Meat_Megasloth</li>
-											<li>Meat_Capybara</li>
-											<li>Meat_Squirrel</li>
-											<li>Meat_Rat</li>
-											<li>Meat_Boomrat</li>
-											<li>Meat_Raccoon</li>
-											<li>Meat_Iguana</li>
-											<li>Meat_Warg</li>
-											<li>Meat_Wolf_Timber</li>
-											<li>Meat_Fox_Fennec</li>
-											<li>RawPotatoes</li>
-											<li>RawFungus</li>
-											<li>RawRice</li>
-											<li>RawAgave</li>
-											<li>RawCorn</li>
-											<li>RawBerries</li>
-											<li>Milk</li>
-											<li>EggChickenUnfertilized</li>
-											<li>EggCobraUnfertilized</li>
-											<li>EggIguanaUnfertilized</li>
-											<li>EggTortoiseUnfertilized</li>
-											<li>EggCassowaryUnfertilized</li>
-											<li>EggEmuUnfertilized</li>
-											<li>EggOstrichUnfertilized</li>
-											<li>EggTurkeyUnfertilized</li>
-											<li>EggDuckUnfertilized</li>
-											<li>EggGooseUnfertilized</li>
-										</allowedDefs>
-										<allowedHitPointsPercents>0~1</allowedHitPointsPercents>
-										<allowedMentalBreakChance>0~1</allowedMentalBreakChance>
-										<allowedQualityLevels>Awful~Legendary</allowedQualityLevels>
-									</ingredientFilter>
-									<repeatMode>TargetCount</repeatMode>
-									<repeatCount>19</repeatCount>
-									<storeMode>BestStockpile</storeMode>
-									<targetCount>104</targetCount>
-									<unpauseWhenYouHave>34</unpauseWhenYouHave>
-									<storeGroup>null</storeGroup>
-									<includeGroup>null</includeGroup>
-								</li>
+								
 								<li Class="Bill_Production">
 									<loadID>27</loadID>
 									<recipe>CookMealFine</recipe>
@@ -450232,41 +450141,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<spawnedTick>6299003</spawnedTick>
 						<despawnedTick>-1</despawnedTick>
 						<billStack>
-							<bills>
-								<li Class="Bill_ProductionWithUft">
-									<loadID>34</loadID>
-									<recipe>Make_Apparel_BowlerHat</recipe>
-									<suspended>True</suspended>
+							<bills><li Class="Bill_ProductionWithUft">
+									<loadID>50</loadID>
+									<recipe>Make_Apparel_Duster</recipe>
 									<allowedSkillRange>0~20</allowedSkillRange>
-									<pawnRestriction>Thing_Human320312</pawnRestriction>
+									<pawnRestriction>null</pawnRestriction>
 									<precept>null</precept>
 									<xenogerm>null</xenogerm>
-									<ingredientFilter>
-										<disallowedSpecialFilters />
-										<allowedDefs>
-											<li>Cloth</li>
-											<li>WoolMuffalo</li>
-											<li>Leather_Plain</li>
-											<li>Leather_Light</li>
-											<li>Leather_Bluefur</li>
-											<li>Leather_Panthera</li>
-											<li>Leather_Bird</li>
-										</allowedDefs>
-										<allowedHitPointsPercents>0~1</allowedHitPointsPercents>
-										<allowedMentalBreakChance>0~1</allowedMentalBreakChance>
-										<allowedQualityLevels>Awful~Legendary</allowedQualityLevels>
-									</ingredientFilter>
+									<filter><disallowedSpecialFilters /><allowedDefs><li>Cloth</li></allowedDefs><allowedHitPointsPercents>0~1</allowedHitPointsPercents><allowedMentalBreakChance>0~1</allowedMentalBreakChance><allowedQualityLevels>Awful~Legendary</allowedQualityLevels></filter>
 									<repeatMode>TargetCount</repeatMode>
+									<repeatCount>6</repeatCount>
 									<storeMode>BestStockpile</storeMode>
-									<targetCount>26</targetCount>
-									<unpauseWhenYouHave>5</unpauseWhenYouHave>
-									<hpRange>0.5~1</hpRange>
-									<qualityRange>Normal~Legendary</qualityRange>
+									<targetCount>6</targetCount>
 									<storeGroup>null</storeGroup>
 									<includeGroup>null</includeGroup>
 									<boundUft>null</boundUft>
-								</li>
-							</bills>
+								</li></bills>
 						</billStack>
 					</thing>
 					<thing Class="Building_WorkTable_HeatPush">
@@ -450436,7 +450326,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 									<includeGroup>null</includeGroup>
 									<boundUft>null</boundUft>
 								</li>
-							</bills>
+							<li Class="Bill_ProductionWithUft">
+									<loadID>49</loadID>
+									<recipe>Make_Apparel_Parka</recipe>
+									<allowedSkillRange>0~20</allowedSkillRange>
+									<pawnRestriction>null</pawnRestriction>
+									<precept>null</precept>
+									<xenogerm>null</xenogerm>
+									<filter><disallowedSpecialFilters /><allowedDefs><li>Cloth</li></allowedDefs><allowedHitPointsPercents>0~1</allowedHitPointsPercents><allowedMentalBreakChance>0~1</allowedMentalBreakChance><allowedQualityLevels>Awful~Legendary</allowedQualityLevels></filter>
+									<repeatMode>TargetCount</repeatMode>
+									<repeatCount>8</repeatCount>
+									<storeMode>BestStockpile</storeMode>
+									<targetCount>8</targetCount>
+									<storeGroup>null</storeGroup>
+									<includeGroup>null</includeGroup>
+									<boundUft>null</boundUft>
+								</li></bills>
 						</billStack>
 					</thing>
 					<thing Class="Building_WorkTable">
@@ -450687,7 +450592,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 									<includeGroup>null</includeGroup>
 									<boundUft>null</boundUft>
 								</li>
-							</bills>
+							<li Class="Bill_ProductionWithUft">
+									<loadID>51</loadID>
+									<recipe>Make_ComponentIndustrial</recipe>
+									<allowedSkillRange>0~20</allowedSkillRange>
+									<pawnRestriction>null</pawnRestriction>
+									<precept>null</precept>
+									<xenogerm>null</xenogerm>
+									<filter><disallowedSpecialFilters /><allowedDefs><li>Cloth</li></allowedDefs><allowedHitPointsPercents>0~1</allowedHitPointsPercents><allowedMentalBreakChance>0~1</allowedMentalBreakChance><allowedQualityLevels>Awful~Legendary</allowedQualityLevels></filter>
+									<repeatMode>TargetCount</repeatMode>
+									<repeatCount>25</repeatCount>
+									<storeMode>BestStockpile</storeMode>
+									<targetCount>25</targetCount>
+									<storeGroup>null</storeGroup>
+									<includeGroup>null</includeGroup>
+									<boundUft>null</boundUft>
+								</li></bills>
 						</billStack>
 					</thing>
 					<thing Class="Building_WorkTable">
@@ -450702,7 +450622,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<despawnedTick>-1</despawnedTick>
 						<parentThing>Thing_HiddenConduit503931</parentThing>
 						<billStack>
-							<bills />
+							<bills><li Class="Bill_ProductionWithUft">
+									<loadID>48</loadID>
+									<recipe>Make_Apparel_PlateArmor</recipe>
+									<allowedSkillRange>0~20</allowedSkillRange>
+									<pawnRestriction>null</pawnRestriction>
+									<precept>null</precept>
+									<xenogerm>null</xenogerm>
+									<filter><disallowedSpecialFilters /><allowedDefs><li>Steel</li></allowedDefs><allowedHitPointsPercents>0~1</allowedHitPointsPercents><allowedMentalBreakChance>0~1</allowedMentalBreakChance><allowedQualityLevels>Awful~Legendary</allowedQualityLevels></filter>
+									<repeatMode>TargetCount</repeatMode>
+									<repeatCount>3</repeatCount>
+									<storeMode>BestStockpile</storeMode>
+									<targetCount>3</targetCount>
+									<storeGroup>null</storeGroup>
+									<includeGroup>null</includeGroup>
+									<boundUft>null</boundUft>
+								</li></bills>
 						</billStack>
 					</thing>
 					<thing Class="Building_CommsConsole">
@@ -452547,7 +452482,97 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 						<despawnedTick>-1</despawnedTick>
 						<fuel>19.0715752</fuel>
 						<allowAutoRefuel>True</allowAutoRefuel>
-						<billStack><bills /></billStack>
+						<billStack><bills><li Class="Bill_Production">
+									<loadID>52</loadID>
+									<recipe>CookMealSimple</recipe>
+									<allowedSkillRange>0~20</allowedSkillRange>
+									<pawnRestriction>null</pawnRestriction>
+									<precept>null</precept>
+									<xenogerm>null</xenogerm>
+									<ingredientFilter>
+										<disallowedSpecialFilters>
+											<li>AllowCorpsesColonist</li>
+											<li>AllowCorpsesStranger</li>
+										</disallowedSpecialFilters>
+										<allowedDefs>
+											<li>Meat_Bear_Grizzly</li>
+											<li>Meat_Cassowary</li>
+											<li>Meat_Cougar</li>
+											<li>Meat_Panther</li>
+											<li>Meat_Lynx</li>
+											<li>Meat_Cat</li>
+											<li>Meat_YorkshireTerrier</li>
+											<li>Meat_GuineaPig</li>
+											<li>Meat_LabradorRetriever</li>
+											<li>Meat_Husky</li>
+											<li>Meat_Monkey</li>
+											<li>Meat_Chicken</li>
+											<li>Meat_Duck</li>
+											<li>Meat_Turkey</li>
+											<li>Meat_Cow</li>
+											<li>Meat_Boomalope</li>
+											<li>Meat_Muffalo</li>
+											<li>Meat_Bison</li>
+											<li>Meat_Dromedary</li>
+											<li>Meat_Goat</li>
+											<li>Meat_Elk</li>
+											<li>Meat_Yak</li>
+											<li>Meat_Caribou</li>
+											<li>Meat_Horse</li>
+											<li>Meat_Donkey</li>
+											<li>Meat_Elephant</li>
+											<li>Meat_Rhinoceros</li>
+											<li>Meat_Hare</li>
+											<li>Meat_Thrumbo</li>
+											<li>Meat_Cobra</li>
+											<li>Meat_Tortoise</li>
+											<li>Meat_Alphabeaver</li>
+											<li>Meat_Pig</li>
+											<li>Meat_Ibex</li>
+											<li>Meat_Deer</li>
+											<li>Meat_Gazelle</li>
+											<li>Meat_Chinchilla</li>
+											<li>Meat_Sheep</li>
+											<li>Meat_Alpaca</li>
+											<li>Meat_Megasloth</li>
+											<li>Meat_Capybara</li>
+											<li>Meat_Squirrel</li>
+											<li>Meat_Rat</li>
+											<li>Meat_Boomrat</li>
+											<li>Meat_Raccoon</li>
+											<li>Meat_Iguana</li>
+											<li>Meat_Warg</li>
+											<li>Meat_Wolf_Timber</li>
+											<li>Meat_Fox_Fennec</li>
+											<li>RawPotatoes</li>
+											<li>RawFungus</li>
+											<li>RawRice</li>
+											<li>RawAgave</li>
+											<li>RawCorn</li>
+											<li>RawBerries</li>
+											<li>Milk</li>
+											<li>EggChickenUnfertilized</li>
+											<li>EggCobraUnfertilized</li>
+											<li>EggIguanaUnfertilized</li>
+											<li>EggTortoiseUnfertilized</li>
+											<li>EggCassowaryUnfertilized</li>
+											<li>EggEmuUnfertilized</li>
+											<li>EggOstrichUnfertilized</li>
+											<li>EggTurkeyUnfertilized</li>
+											<li>EggDuckUnfertilized</li>
+											<li>EggGooseUnfertilized</li>
+										</allowedDefs>
+										<allowedHitPointsPercents>0~1</allowedHitPointsPercents>
+										<allowedMentalBreakChance>0~1</allowedMentalBreakChance>
+										<allowedQualityLevels>Awful~Legendary</allowedQualityLevels>
+									</ingredientFilter>
+									<repeatMode>TargetCount</repeatMode>
+									<storeMode>BestStockpile</storeMode>
+									<targetCount>60</targetCount>
+									<unpauseWhenYouHave>5</unpauseWhenYouHave>
+									<storeGroup>null</storeGroup>
+									<includeGroup>null</includeGroup>
+								</li></bills></billStack>
 					</thing>
 					<thing Class="Building">
 						<def>StandingLamp</def>
