@@ -405,6 +405,66 @@ class Ed:
             self._stocked.add(r.id); r.set_pos(*free.pop(0)); n += 1
         self.say('stocked', d, n)
 
+    # ------------------------------------------------------------ diagnostics
+    def leaks(self):
+        """cells inside the compound reachable from outside without passing a wall/closed door"""
+        bar = {c for c, rs in self.cell.items() if any(q.d in ('Wall', 'Door') for q in rs)}
+        for c, rs in self.cell.items():
+            if any(q.d in ('Turret_MiniTurret',) for q in rs) and c[1] >= 107 and 114 <= c[0] <= 159: pass
+        start = (98, 100); seen = {start}; st = [start]
+        while st:
+            x, z = st.pop()
+            for n in ((x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1)):
+                if n in seen or n in bar or not (80 <= n[0] <= 185 and 80 <= n[1] <= 170): continue
+                seen.add(n); st.append(n)
+        roofed = [c for c in seen if 114 < c[0] < 159 and 107 < c[1] < 156]
+        self.say('leaking cells inside main compound:', len(roofed), sorted(roofed)[:12])
+
+    def nets(self, fix=False):
+        tr = self.trans()
+        cells = set(tr)
+        comp = {}; comps = []
+        for c in cells:
+            if c in comp: continue
+            cid = len(comps); comps.append([]); st = [c]; comp[c] = cid
+            while st:
+                a = st.pop(); comps[cid].append(a)
+                for n in ((a[0] + 1, a[1]), (a[0] - 1, a[1]), (a[0], a[1] + 1), (a[0], a[1] - 1)):
+                    if n in cells and n not in comp: comp[n] = cid; st.append(n)
+        src = max(range(len(comps)), key=lambda i: sum(1 for c in comps[i] if tr[c].d == 'SolarGenerator'))
+        cons = collections.Counter()
+        for r in self.M.recs:
+            if r.deleted or not r.pos or r.d not in POWERED: continue
+            m = re.search(r'<parentThing>Thing_(\w+)</parentThing>', r.raw)
+            if not m: cons['none'] += 1; continue
+            t = next((c for c, q in tr.items() if q.id == m.group(1)), None)
+            cons[comp.get(t, 'missing')] += 1
+        self.say('power nets:', len(comps), 'source net', src, 'sizes', sorted((len(c) for c in comps), reverse=True)[:6], 'consumers per net', dict(cons))
+        if not fix: return
+        for i, cc in enumerate(comps):
+            if i == src: continue
+            goal = set(comps[src]); pq = []; dist = {}; prev = {}
+            solid = {c for c, rs in self.cell.items() if any(q.d not in ('PowerConduit', 'HiddenConduit', 'Wall', 'Door', 'Heater', 'StandingLamp', 'Vent', 'Cooler', 'Battery', 'SolarGenerator', 'Turret_MiniTurret') for q in rs)}
+            walls = {c for c, rs in self.cell.items() if any(q.d == 'Wall' for q in rs)}
+            for c in cc: dist[c] = 0; prev[c] = None; heapq.heappush(pq, (0, c))
+            end = None
+            while pq:
+                d0, cur = heapq.heappop(pq)
+                if d0 > dist[cur]: continue
+                if cur in goal: end = cur; break
+                for n in ((cur[0] + 1, cur[1]), (cur[0] - 1, cur[1]), (cur[0], cur[1] + 1), (cur[0], cur[1] - 1)):
+                    if n in solid: continue
+                    nd = d0 + (6 if n in walls else 1)
+                    if nd < dist.get(n, 1e9): dist[n] = nd; prev[n] = cur; heapq.heappush(pq, (nd, n))
+            if end is None: self.say('net', i, 'cannot be joined'); continue
+            c = end; added = 0
+            while c is not None:
+                if c not in tr:
+                    raw, nid = AB.new_thing(self.M, self.T, CONDUIT, c[0], c[1])
+                    tr[c] = self._add_rec(AB.set_raw_tag(raw, 'parentThing', 'null'), 'Building'); added += 1
+                c = prev[c]
+            self.say('joined net', i, 'size', len(cc), 'with +%d cables' % added)
+
     def hp(self):
         n = 0
         for r in self.M.recs:
@@ -440,7 +500,7 @@ class Ed:
                     self.show(*args[:4], wires=len(args) > 4)
                 elif cmd == 'roof':
                     self.roof_(*args)
-                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save', 'hide', 'clear', 'bill', 'unbill', 'stock'):
+                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save', 'hide', 'clear', 'bill', 'unbill', 'stock', 'leaks', 'nets'):
                     getattr(self, cmd)(*args)
                 else:
                     self.say('unknown command', cmd)

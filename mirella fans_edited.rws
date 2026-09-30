@@ -51283,7 +51283,7 @@ NF11LNqZxctbni/cyVw5aRVV1KZz07dlluaTx6bf+dEb
 			<lastSeason>Summer</lastSeason>
 		</dateNotifier>
 		<uniqueIDsManager>
-			<nextThingID>504210</nextThingID>
+			<nextThingID>504232</nextThingID>
 			<nextBillID>53</nextBillID>
 			<nextFactionID>11</nextFactionID>
 			<nextLordID>170</nextLordID>
@@ -470728,6 +470728,260 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 							</verbTracker>
 							<sourcePrecept>null</sourcePrecept>
 						</gun>
+					</thing><thing Class="Building_Door">
+						<def>Door</def>
+						
+						<id>Door504210</id>
+						<map>0</map>
+						<pos>(123, 0, 107)</pos><health>160</health>
+						
+						<stuff>Steel</stuff>
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<beenRevealed>True</beenRevealed>
+						
+						
+					</thing><thing Class="Building_Door">
+						<def>Door</def>
+						
+						<id>Door504211</id>
+						<map>0</map>
+						<pos>(124, 0, 107)</pos><health>160</health>
+						
+						<stuff>Steel</stuff>
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<beenRevealed>True</beenRevealed>
+						
+						
+					</thing><thing Class="Building_Door">
+						<def>Door</def>
+						
+						<id>Door504212</id>
+						<map>0</map>
+						<pos>(125, 0, 107)</pos><health>160</health>
+						
+						<stuff>Steel</stuff>
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<beenRevealed>True</beenRevealed>
+						
+						
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504213</id>
+						<map>0</map>
+						<pos>(120, 0, 108)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504214</id>
+						<map>0</map>
+						<pos>(121, 0, 108)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504215</id>
+						<map>0</map>
+						<pos>(122, 0, 108)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504216</id>
+						<map>0</map>
+						<pos>(123, 0, 108)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504217</id>
+						<map>0</map>
+						<pos>(123, 0, 107)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504218</id>
+						<map>0</map>
+						<pos>(124, 0, 107)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504219</id>
+						<map>0</map>
+						<pos>(125, 0, 107)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504220</id>
+						<map>0</map>
+						<pos>(156, 0, 129)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504221</id>
+						<map>0</map>
+						<pos>(156, 0, 128)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504222</id>
+						<map>0</map>
+						<pos>(157, 0, 128)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504223</id>
+						<map>0</map>
+						<pos>(158, 0, 128)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504224</id>
+						<map>0</map>
+						<pos>(156, 0, 131)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504225</id>
+						<map>0</map>
+						<pos>(156, 0, 132)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504226</id>
+						<map>0</map>
+						<pos>(156, 0, 133)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504227</id>
+						<map>0</map>
+						<pos>(157, 0, 133)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504228</id>
+						<map>0</map>
+						<pos>(158, 0, 133)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504229</id>
+						<map>0</map>
+						<pos>(159, 0, 133)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504230</id>
+						<map>0</map>
+						<pos>(160, 0, 133)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
+					</thing><thing Class="Building">
+						<def>HiddenConduit</def>
+						<id>HiddenConduit504231</id>
+						<map>0</map>
+						<pos>(160, 0, 134)</pos><health>100</health>
+						
+						<faction>Faction_10</faction>
+						<questTags IsNull="True" />
+						<spawnedTick>16105210</spawnedTick>
+						<despawnedTick>-1</despawnedTick>
+						<parentThing>null</parentThing>
 					</thing></things>
 			</li>
 		</maps>
