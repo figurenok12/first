@@ -36,6 +36,7 @@ class _Tmpl:
     def __init__(self, r):
         self.raw = r.raw
         self.faction = r.faction
+        self.cls = r.cls
 
 
 def make_templates(M):

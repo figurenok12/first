@@ -45,8 +45,8 @@ class Rec:
 
 
 class SaveModel:
-    def __init__(self):
-        self.s = load()
+    def __init__(self, path=None):
+        self.s = load() if path is None else open(path, encoding='utf-8-sig').read()
         ms = self.s.find('<maps>')
         a = self.s.find('<things>', ms)
         a2 = a + len('<things>')
