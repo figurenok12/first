@@ -18,6 +18,8 @@ Commands (coords are world x z; z grows north; ';' or newline separates commands
   roof X0 Z0 X1 Z1 on|off   constructed roof
   wire X0 Z0 X1 Z1          lay conduits on every cell of region
   autowire                  connect every unpowered consumer to the nearest conduit
+  hide                      turn all visible wires into underground cables
+  clear X0 Z0 X1 Z1         remove trees/plants in region
   hp                        give every building without health its proper default
   zone ID X0 Z0 X1 Z1       replace stockpile zone ID cells with the rectangle (ID = zone number)
   save [path]               write (default: overwrites the edited save)
@@ -32,6 +34,7 @@ import apply_build as AB
 import apply_world as AW
 
 EDITED = '/home/user/first/mirella fans_edited.rws'
+CONDUIT = 'HiddenConduit'   # underground cable (invisible)
 BLD_SKIP = {'Pawn', 'Plant', 'DeadPlant', 'Filth', 'Corpse', 'Medicine', 'Apparel', 'ThingWithComps', 'UnfinishedThing', 'MinifiedThing', 'Thing'}
 CH = {'Wall': '#', 'Door': '+', 'Bed': 'b', 'BedGuest': 'g', 'DiningChair': 'c', 'Table2x2c': 'T', 'Shelf': 's', 'Heater': 'H',
       'Cooler': 'C', 'Vent': 'v', 'SolarGenerator': 'S', 'Battery': 'B', 'Turret_MiniTurret': 'M', 'Turret_Mortar': 'N',
@@ -94,9 +97,10 @@ class Ed:
                     if not ch:
                         ch = legend.setdefault(pick.d, chr(ord('A') + len(legend) % 26) if False else None)
                         if ch is None:
-                            for cand in (pick.d[0].lower(), pick.d[0].upper(), 'a', 'e', 'i', 'o', 'p', 'q', 'r', 'w', 'x', 'y', 'z', 'k', 'd', 'f', 'j', 'm', 'n'):
+                            for cand in (pick.d[0].lower(), pick.d[0].upper(), *'aeiopqrwxyzkdfjmnL0123456789@%&*=$^?'):
                                 if cand not in CH.values() and cand not in legend.values():
                                     ch = cand; break
+                            ch = ch or '?'
                             legend[pick.d] = ch
                 row += ch
             rows.append('%3d %s' % (z, row))
@@ -266,7 +270,7 @@ class Ed:
                 while c is not None: path.append(c); c = prev[c]
                 for c in path:
                     if c not in tr:
-                        raw, nid = AB.new_thing(self.M, self.T, 'PowerConduit', c[0], c[1])
+                        raw, nid = AB.new_thing(self.M, self.T, CONDUIT, c[0], c[1])
                         raw = AB.set_raw_tag(raw, 'parentThing', 'null')
                         nr = self._add_rec(raw, 'Building'); tr[c] = nr
                 r.raw = AB.set_raw_tag(r.raw, 'parentThing', 'Thing_' + tr[cur].id)
@@ -283,7 +287,7 @@ class Ed:
         for x in range(min(x0, x1), max(x0, x1) + 1):
             for z in range(min(z0, z1), max(z0, z1) + 1):
                 if (x, z) in tr: continue
-                raw, nid = AB.new_thing(self.M, self.T, 'PowerConduit', x, z)
+                raw, nid = AB.new_thing(self.M, self.T, CONDUIT, x, z)
                 self._add_rec(AB.set_raw_tag(raw, 'parentThing', 'null'), 'Building'); n += 1
         self.say('conduits +%d' % n)
 
@@ -297,6 +301,32 @@ class Ed:
             if self.wire_rec(r, tr): n += 1
             else: bad += 1
         self.say('autowired', n, 'failed', bad)
+
+    def hide(self):
+        """convert every visible PowerConduit into an underground HiddenConduit"""
+        t = self.T.get('HiddenConduit')
+        hp = re.search(r'<health>(\d+)</health>', t.raw).group(1) if t and re.search(r'<health>(\d+)</health>', t.raw) else None
+        n = 0
+        for r in self.M.recs:
+            if r.deleted or r.d != 'PowerConduit': continue
+            r.raw = r.raw.replace('<def>PowerConduit</def>', '<def>HiddenConduit</def>')
+            r.raw = re.sub(r'<id>PowerConduit(\d+)</id>', r'<id>HiddenConduit\1</id>', r.raw)
+            if hp: r.raw = re.sub(r'<health>\d+</health>', '<health>%s</health>' % hp, r.raw)
+            r.d = 'HiddenConduit'; r.id = 'HiddenConduit' + r.id[len('PowerConduit'):]; n += 1
+        rx = re.compile(r'Thing_PowerConduit(\d+)')
+        for r in self.M.recs:
+            if not r.deleted and 'Thing_PowerConduit' in r.raw:
+                r.raw = rx.sub(r'Thing_HiddenConduit\1', r.raw)
+        self.M.head = rx.sub(r'Thing_HiddenConduit\1', self.M.head)
+        self.index(); self.say('hidden conduits', n)
+
+    def clear(self, x0, z0, x1, z1):
+        n = 0
+        for r in self.M.recs:
+            if r.deleted or not r.pos or r.cls not in ('Plant', 'DeadPlant'): continue
+            if min(x0, x1) <= r.pos[0] <= max(x0, x1) and min(z0, z1) <= r.pos[1] <= max(z0, z1):
+                r.deleted = True; n += 1
+        self.say('plants cleared', n)
 
     def hp(self):
         n = 0
@@ -333,7 +363,7 @@ class Ed:
                     self.show(*args[:4], wires=len(args) > 4)
                 elif cmd == 'roof':
                     self.roof_(*args)
-                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save'):
+                elif cmd in ('info', 'put', 'wall', 'box', 'door', 'rm', 'mv', 'rot', 'floor', 'wire', 'autowire', 'hp', 'zone', 'save', 'hide', 'clear'):
                     getattr(self, cmd)(*args)
                 else:
                     self.say('unknown command', cmd)
